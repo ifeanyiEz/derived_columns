@@ -11,3 +11,11 @@ LIMIT 10;
 SELECT id, account_id, (standard_amt_usd/standard_qty) AS unit_price
 FROM orders
 LIMIT 10;
+
+
+/*Write a query that finds the percentage of revenue that comes from poster paper for each order. You will need to use only the columns that end with _usd. Display the id and account_id fields also.*/
+
+SELECT id, account_id, 100 * (poster_amt_usd/(standard_amt_usd+gloss_amt_usd+poster_amt_usd)) AS poster_percent
+FROM orders
+WHERE poster_amt_usd > 0
+LIMIT 20;
